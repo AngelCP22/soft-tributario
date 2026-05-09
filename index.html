@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Soft Tributario | Fase 1</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-icon">ST</div>
+      <div>
+        <h1>Soft Tributario</h1>
+        <p>Predeclaración MYPE</p>
+      </div>
+    </div>
+
+    <nav class="menu">
+      <a class="active" href="#dashboard">Dashboard</a>
+      <a href="#empresas">Empresas</a>
+      <a href="#ventas">Ventas</a>
+      <a href="#compras">Compras</a>
+      <a href="#reglas">Reglas</a>
+      <a href="#621">Resumen 621</a>
+    </nav>
+
+    <div class="sidebar-card">
+      <span>Periodo actual</span>
+      <strong>Mayo 2026</strong>
+      <small>Vencimientos próximos activos</small>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div>
+        <h2>Panel tributario fase 1</h2>
+        <p>Centraliza ventas, compras, observaciones y cálculo preliminar IGV.</p>
+      </div>
+      <button id="syncButton">Sincronizar demo</button>
+    </header>
+
+    <section class="stats-grid" id="dashboard">
+      <article class="stat-card">
+        <span>Empresas</span>
+        <strong id="companyCount">0</strong>
+        <small>Clientes registrados</small>
+      </article>
+      <article class="stat-card warning">
+        <span>Observaciones</span>
+        <strong id="issueCount">0</strong>
+        <small>Compras por revisar</small>
+      </article>
+      <article class="stat-card success">
+        <span>IGV estimado</span>
+        <strong id="taxResult">S/ 0.00</strong>
+        <small>Resultado del periodo</small>
+      </article>
+      <article class="stat-card info">
+        <span>Estado</span>
+        <strong id="periodStatus">Pendiente</strong>
+        <small>Predeclaración 621</small>
+      </article>
+    </section>
+
+    <section class="layout-grid">
+      <article class="panel" id="empresas">
+        <div class="panel-header">
+          <div>
+            <h3>Empresas registradas</h3>
+            <p>Clientes MYPE o empresas del estudio contable.</p>
+          </div>
+          <button class="secondary">Agregar empresa</button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>RUC</th>
+                <th>Razón social</th>
+                <th>Régimen</th>
+                <th>Vence</th>
+                <th>Estado</th>
+              </tr>
+            </thead>
+            <tbody id="companiesTable"></tbody>
+          </table>
+        </div>
+      </article>
+
+      <article class="panel compact">
+        <h3>Flujo fase 1</h3>
+        <ol class="timeline">
+          <li>Registrar empresa por RUC</li>
+          <li>Importar ventas y compras</li>
+          <li>Aplicar reglas tributarias</li>
+          <li>Revisar observaciones</li>
+          <li>Generar resumen 621</li>
+        </ol>
+      </article>
+    </section>
+
+    <section class="layout-grid two">
+      <article class="panel" id="ventas">
+        <div class="panel-header">
+          <div>
+            <h3>Ventas del periodo</h3>
+            <p>Base para calcular débito fiscal.</p>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Fecha</th>
+                <th>Comprobante</th>
+                <th>Cliente</th>
+                <th>Base</th>
+                <th>IGV</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody id="salesTable"></tbody>
+          </table>
+        </div>
+      </article>
+
+      <article class="panel" id="compras">
+        <div class="panel-header">
+          <div>
+            <h3>Compras del periodo</h3>
+            <p>Base para calcular crédito fiscal y observaciones.</p>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Fecha</th>
+                <th>Proveedor</th>
+                <th>Total</th>
+                <th>Crédito</th>
+                <th>Estado</th>
+              </tr>
+            </thead>
+            <tbody id="purchasesTable"></tbody>
+          </table>
+        </div>
+      </article>
+    </section>
+
+    <section class="layout-grid two">
+      <article class="panel" id="reglas">
+        <h3>Reglas tributarias aplicadas</h3>
+        <div id="rulesList" class="rules-list"></div>
+      </article>
+
+      <article class="panel summary" id="621">
+        <h3>Resumen preliminar Formulario 621</h3>
+        <div class="summary-row"><span>Ventas gravadas</span><strong id="summarySales">S/ 0.00</strong></div>
+        <div class="summary-row"><span>IGV ventas / débito fiscal</span><strong id="summarySalesTax">S/ 0.00</strong></div>
+        <div class="summary-row"><span>Compras aceptadas</span><strong id="summaryPurchases">S/ 0.00</strong></div>
+        <div class="summary-row"><span>IGV compras / crédito fiscal</span><strong id="summaryPurchaseTax">S/ 0.00</strong></div>
+        <div class="summary-row total"><span>Resultado estimado</span><strong id="summaryResult">S/ 0.00</strong></div>
+        <button class="full">Exportar reporte demo</button>
+      </article>
+    </section>
+  </main>
+
+  <script src="js/rules-engine.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
