@@ -1,0 +1,26 @@
+[
+  {
+    "id": "REG-COMP-001",
+    "name": "Proveedor observado",
+    "module": "compras",
+    "risk": "alto",
+    "active": true,
+    "action": "marcar_observado"
+  },
+  {
+    "id": "REG-COMP-002",
+    "name": "Posible detraccion",
+    "module": "compras",
+    "risk": "medio",
+    "active": true,
+    "action": "solicitar_revision"
+  },
+  {
+    "id": "REG-COMP-003",
+    "name": "Posible retencion",
+    "module": "compras",
+    "risk": "medio",
+    "active": true,
+    "action": "solicitar_revision"
+  }
+]
